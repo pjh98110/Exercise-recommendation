@@ -1,0 +1,15 @@
+streamlit
+pandas
+numpy
+datetime
+streamlit_extras
+st_pages
+scipy==1.7.3
+scikit-learn
+explainerdashboard
+dash_bootstrap_components
+matplotlib
+seaborn
+folium
+streamlit_folium
+chardet
