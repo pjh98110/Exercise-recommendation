@@ -137,9 +137,9 @@ elif selected_chatbot == "바드 API를 활용한 운동 설명 챗봇":
 
     def on_input_change():
         user_input2 = st.session_state.user_input2
-        st.session_state.past.append(user_input2)
-        # 사용자 입력 후, 입력 필드 초기화
-        st.session_state['user_input2'] = ""
+        if user_input2:  # 사용자가 입력한 경우에만 처리
+            st.session_state.past2.append(user_input2)
+            st.session_state['user_input2'] = ""  # 입력 필드 초기화
 
         # target 키 초기화
         st.session_state.setdefault('target2', '')   
@@ -147,7 +147,7 @@ elif selected_chatbot == "바드 API를 활용한 운동 설명 챗봇":
         if st.session_state['chat_stage2'] == 1:
             st.session_state['target2'] = user_input2 # 추천하는 최대 운동 개수
 
-            target_str = f"""헬스 트레이너로서 답변한다. 주어진 예시를 참고하여 운동을 자세하게 설명하는 task이다.
+            target_str_2 = f"""헬스 트레이너로서 답변한다. 주어진 예시를 참고하여 운동을 자세하게 설명하는 task이다.
                 예시: [가슴 스트레칭 운동 순서와 방법
                 1. 준비 자세
                 운동 시작 전, 편안한 서 있는 자세 또는 의자에 앉은 상태에서 시작합니다.
@@ -214,14 +214,17 @@ elif selected_chatbot == "바드 API를 활용한 운동 설명 챗봇":
             try:
                 # Home에서 작성한 체력 측정 값과 Few shot learning 예시(운동 목록)를 Bard API에 함께 전달
                 bard = Bard(token=os.environ["_BARD_API_KEY"], token_from_browser=True, session=session, timeout=30)
-                response = bard.get_answer(target_str)
+                response = bard.get_answer(target_str_2)
                 st.session_state['generated2'].append({"type": "normal", "data": response['content']})
                     
             except Exception as e:
                 st.error(f"API 요청 중 오류가 발생했습니다.쿠키를 초기화하고 새로운 API 키를 입력해 주세요. ")
                 response = {'content': 'API 요청에 문제가 발생했습니다. 쿠키를 초기화하고 새로운 API 키를 입력해 주세요..'}
+
+    # 챗봇 대화 표시
     with chat_placeholder.container():
-        for i in range(len(st.session_state['generated2'])):
+        min_length = min(len(st.session_state['generated2']), len(st.session_state['past2']))
+        for i in range(min_length):
             message(st.session_state['past2'][i], is_user=True, key=f"{i}_user")
             message(
                 st.session_state['generated2'][i]['data'],
@@ -230,15 +233,9 @@ elif selected_chatbot == "바드 API를 활용한 운동 설명 챗봇":
                 is_table=True if st.session_state['generated2'][i]['type'] == 'table' else False
             )
         
-        st.button("대화 초기화", on_click=on_btn_click, key="clear_key")
+        st.button("대화 초기화", on_click=on_btn_click, key="clear_key2")
+
 
     with st.container():
-        st.text_input("챗봇과 대화하기:", value=st.session_state['user_input2'], on_change=on_input_change, key="user_input", help="대화 초기화 버튼을 누르면 초기화면으로 돌아옵니다.")
-
-
-
-
-
-
-
+        st.text_input("챗봇과 대화하기:", value=st.session_state['user_input2'], on_change=on_input_change, key="user_input2", help="대화 초기화 버튼을 누르면 초기화면으로 돌아옵니다.")
 
