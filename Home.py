@@ -145,15 +145,14 @@ if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
     st.session_state.questions = questions
 
 
-
     # 제출 버튼을 누를 경우
     if st.button("제출"):
-
+        model_exercises = data['본운동'].sample(5).tolist()
         st.markdown(f"당신의 성별은 {selected_gender}이며, 연령대는 {selected_age}입니다.")
+        st.markdown(f"분석한 결과 추천 운동은 {model_exercises}입니다.")
         st.markdown(f"추천 운동을 기반으로 원하는 정보를 선택하세요")
 
-
-
+    
     st.markdown(
         """
         <style>
