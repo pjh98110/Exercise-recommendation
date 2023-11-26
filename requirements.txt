@@ -3,6 +3,8 @@ pandas
 numpy
 datetime
 streamlit_extras
+streamlit_chat
+bardapi
 st_pages
 scipy==1.7.3
 scikit-learn
