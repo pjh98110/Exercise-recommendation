@@ -41,10 +41,10 @@ if 'type_of_case' not in st.session_state:
     st.session_state.type_of_case = None
 
 if 'selected_gender' not in st.session_state:
-    st.session_state.selected_gender = "남성" 기본값
+    st.session_state.selected_gender = "남성" # 기본값
 
 if 'selected_age' not in st.session_state:
-    st.session_state.selected_age = "20대" 기본값
+    st.session_state.selected_age = "20대" # 기본값
 
 if 'questions' not in st.session_state:
     st.session_state.questions = {}
