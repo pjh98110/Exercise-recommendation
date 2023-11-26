@@ -9,7 +9,7 @@ from streamlit_extras.colored_header import colored_header
 if "page" not in st.session_state:
     st.session_state.page = "Home"
 
-DATA_PATH = "C:/Users/Jonghyeon/Desktop/공간데이터/전처리 완료/"
+DATA_PATH = "./"
 SEED = 42
 
 colored_header(
