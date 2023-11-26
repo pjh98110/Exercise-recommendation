@@ -29,6 +29,7 @@ if "page" not in st.session_state:
 DATA_PATH = "./"
 SEED = 42
 
+data = pd.read_csv(f"{DATA_PATH}운동목록.csv")
 
 def reset_seeds(seed):
     random.seed(seed)
