@@ -10,15 +10,6 @@ import pandas as pd
 if "page" not in st.session_state:
     st.session_state.page = "Home"
 
-if 'selected_gender' not in st.session_state:
-    st.session_state.selected_gender = "남성" # 기본값
-
-if 'selected_age' not in st.session_state:
-    st.session_state.selected_age = "20대" # 기본값
-
-if 'bard_input' not in st.session_state:
-    st.session_state.bard_input = None   
-
 DATA_PATH = "./"
 
 
