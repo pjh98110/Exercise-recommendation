@@ -10,7 +10,7 @@ if "page" not in st.session_state:
     st.session_state.page = "Home"
 
 # 데이터 경로
-DATA_PATH = "C:/Users/Jonghyeon/Desktop/공간데이터/전처리 완료/"
+DATA_PATH = "./"
 
 
 # 세션 초기화
