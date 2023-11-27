@@ -10,6 +10,14 @@ from st_pages import Page, show_pages, add_page_title
 from streamlit_extras.colored_header import colored_header
 
 
+# Streamlit의 경우 로컬 환경에서 실행할 경우 터미널 --> (폴더 경로)Streamlit run Home.py로 실행 / 로컬 환경과 스트리밋 웹앱 환경에서 기능의 차이가 일부 있을 수 있음
+# 파일 경로를 잘못 설정할 경우 오류가 발생하고 실행이 불가능하므로 파일 경로 수정 필수
+# 데이터 파일의 경우 배포된 웹앱 깃허브에서 다운로드 가능함
+
+# 스트리밋 클라우드 서버의 데이터 크기 제한으로 인해, 현재 웹앱에서 추천 시스템 모델을 전체적으로 
+# 실행하는 것이 불가능합니다. 이에 따라, 웹앱에서는 모델의 결과를 예시로 보여주는 샘플만 제공되며, 
+# 실제로 정확한 모델 결과를 얻고자 한다면 제출된 추천 시스템 모델 코드를 
+# 자신의 로컬 환경에서 실행해야 합니다.
 # add_page_title()
 
 show_pages(
@@ -148,8 +156,18 @@ if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
 
     # 제출 버튼을 누를 경우
     if st.button("제출"):
+
+        # 스트리밋 클라우드 서버의 데이터 크기 제한으로 인해, 현재 웹앱에서 추천 시스템 모델을 전체적으로 
+        # 실행하는 것이 불가능합니다. 이에 따라, 웹앱에서는 모델의 결과를 예시로 보여주는 샘플만 제공되며, 
+        # 실제로 정확한 모델 결과를 얻고자 한다면 제출된 추천 시스템 모델 코드를 
+        # 자신의 로컬 환경에서 실행해야 합니다.
+
         model_exercises = data['본운동'].sample(5).tolist()
+        volatility = round(random.uniform(-6, 6), 1)
+        before_days = random.choice(range(10, 101, 10))
+
         st.markdown(f"당신의 성별은 {selected_gender}이며, 연령대는 {selected_age}입니다.")
+        st.markdown(f'변화율: {volatility}%, 변화 기간: {before_days}일')
         st.markdown(f"분석한 결과 추천 운동은 {model_exercises}입니다.")
         st.markdown(f"추천 운동을 기반으로 원하는 정보를 선택하세요")
 
