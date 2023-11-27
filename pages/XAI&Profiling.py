@@ -9,7 +9,7 @@ from streamlit_extras.switch_page_button import switch_page
 
 from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
-from pydantic.v1 import BaseModel
+from pydantic import BaseModel
 
 
 if "page" not in st.session_state:
