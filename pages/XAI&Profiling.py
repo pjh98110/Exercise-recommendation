@@ -52,7 +52,8 @@ if selected_xai == "XAI_분류":
 elif selected_xai == "Pandas_Profiling":
     if st.button("Pandas_Profiling 실행"):
         # Pandas Profiling 보고서 생성
-        profile = ProfileReport(data, explorative=True)
+        sample_data = data.sample(frac=0.1) # 샘플 10%
+        profile = ProfileReport(sample_data, explorative=True)
 
         # 스트리밋에 보고서 표시
         st_profile_report(profile)
