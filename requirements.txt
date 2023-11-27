@@ -17,3 +17,4 @@ streamlit_folium
 chardet
 pandas_profiling 
 streamlit_pandas_profiling 
+pydantic
