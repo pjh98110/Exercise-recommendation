@@ -16,5 +16,5 @@ folium
 streamlit_folium
 chardet
 pandas_profiling
-pydantic
+pydantic==1.*
 streamlit_pandas_profiling 
