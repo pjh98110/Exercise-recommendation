@@ -5,9 +5,7 @@ import numpy as np
 import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
-
-# from pandas_profiling import ProfileReport
-# from streamlit_pandas_profiling import st_profile_report
+import streamlit.components.v1 as components 
 import sweetviz as sv
 
 
@@ -52,7 +50,7 @@ if selected_xai == "XAI_분류":
 elif selected_xai == "Sweetviz_Profiling":
     if st.button("Sweetviz_Profiling 실행"):
         # 데이터셋 샘플링
-        sample_data = data.sample(frac=0.1, random_state=SEED)
+        sample_data = data.sample(frac=0.3, random_state=SEED)
         
         # Sweetviz 보고서 생성
         report = sv.analyze(sample_data)
