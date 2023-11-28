@@ -17,4 +17,5 @@ streamlit_folium
 chardet
 pandas_profiling
 pydantic==1.8.1
+typeguard
 streamlit_pandas_profiling 
