@@ -49,11 +49,9 @@ if selected_xai == "XAI_분류":
 # Sweetviz 프로파일링
 elif selected_xai == "Sweetviz_Profiling":
     if st.button("Sweetviz_Profiling 실행"):
-        # 데이터셋 샘플링
-        sample_data = data.sample(frac=0.3, random_state=SEED)
-        
+
         # Sweetviz 보고서 생성
-        report = sv.analyze(sample_data)
+        report = sv.analyze(data)
         
         # HTML 파일로 보고서 저장 및 Streamlit에 표시
         report_path = 'sweetviz_report.html'
