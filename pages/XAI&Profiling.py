@@ -53,11 +53,17 @@ elif selected_xai == "Sweetviz_Profiling":
         # Sweetviz 보고서 생성
         report = sv.analyze(data)
         
-        # HTML 파일로 보고서 저장 및 Streamlit에 표시
-        report_path = 'sweetviz_report.html'
-        report.show_html(report_path)
-        HtmlFile = open(report_path, 'r', encoding='utf-8')
-        source_code = HtmlFile.read() 
-        components.html(source_code, height=800)
+        # HTML 파일로 보고서 저장
+        report_html = report.show_html(filepath='report.html', open_browser=False)
 
+        # 스트리밋에 보고서 표시
+        with open('report.html', 'r') as f:
+            html_string = f.read()
+        
+        components.html(
+            html_string,
+            height=800,
+            width=1200,
+            scrolling=True 
+        )
 
