@@ -2,14 +2,13 @@ import streamlit as st
 st.set_page_config(layout="wide")
 import pandas as pd
 import numpy as np
-import random
 import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
 
-from pandas_profiling import ProfileReport
-from streamlit_pandas_profiling import st_profile_report
-
+# from pandas_profiling import ProfileReport
+# from streamlit_pandas_profiling import st_profile_report
+import sweetviz as sv
 
 
 if "page" not in st.session_state:
@@ -24,18 +23,19 @@ data = pd.read_csv(f"{DATA_PATH}KS_NFA_FTNESS_MESURE_MVN_PRSCRPTN_GNRLZ_INFO_202
 st.markdown(f"""
             <span style='font-size: 24px;'>
             <div style=" color: #000000;">
-                <strong>Explainer_dashboard
+                <strong>XAI&Profiling
             </strong>
             </div>
             """, unsafe_allow_html=True)
 
 
 selected_xai = st.selectbox(
-    label = "원하는 XAI_분석을 선택하세요.",
-    options=["XAI_분류", "Pandas_Profiling"],
+    label="원하는 XAI_분석을 선택하세요.",
+    options=["XAI_분류", "Sweetviz_Profiling"],
     placeholder="하나를 선택하세요.",
     help="선택한 XAI에 따라 다른 분석 결과를 제공합니다.",
-    key="xai_key",)
+    key="xai_key")
+
 
 
 
@@ -48,15 +48,20 @@ if selected_xai == "XAI_분류":
             height=600,
         )
 
-
-# Pandas Profiling
-elif selected_xai == "Pandas_Profiling":
-    if st.button("Pandas_Profiling 실행"):
+# Sweetviz 프로파일링
+elif selected_xai == "Sweetviz_Profiling":
+    if st.button("Sweetviz_Profiling 실행"):
         # 데이터셋 샘플링
         sample_data = data.sample(frac=0.1, random_state=SEED)
         
-        # Pandas Profiling 보고서 생성
-        profile = ProfileReport(sample_data, explorative=True, minimal=True, lazy=True)
+        # Sweetviz 보고서 생성
+        report = sv.analyze(sample_data)
+        
+        # HTML 파일로 보고서 저장 및 Streamlit에 표시
+        report_path = 'sweetviz_report.html'
+        report.show_html(report_path)
+        HtmlFile = open(report_path, 'r', encoding='utf-8')
+        source_code = HtmlFile.read() 
+        components.html(source_code, height=800)
 
-        # Streamlit에 보고서 표시
-        st_profile_report(profile)
+
