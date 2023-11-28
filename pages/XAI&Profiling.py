@@ -56,7 +56,7 @@ elif selected_xai == "Pandas_Profiling":
         sample_data = data.sample(frac=0.1, random_state=SEED)
         
         # Pandas Profiling 보고서 생성
-        profile = ProfileReport(sample_data, explorative=True, minimal=True)
+        profile = ProfileReport(sample_data, explorative=True, minimal=True, lazy=True)
 
         # Streamlit에 보고서 표시
         st_profile_report(profile)
