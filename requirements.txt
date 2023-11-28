@@ -15,7 +15,4 @@ seaborn
 folium
 streamlit_folium
 chardet
-pandas_profiling>=2.10.0
-pydantic>=1.8.2
-typeguard
-streamlit_pandas_profiling
+sweetviz
