@@ -36,34 +36,52 @@ selected_xai = st.selectbox(
 
 
 
+# if selected_xai == "XAI_분류":
+#     if st.button("XAI 분류 실행"):
+#         st.components.v1.html(
+#             """
+#             <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
+#             """,
+#             height=600,
+#         )
+        
+
+# # Sweetviz 프로파일링
+# elif selected_xai == "Sweetviz_Profiling":
+#     if st.button("Sweetviz_Profiling 실행"):
+
+#         # Sweetviz 보고서 생성
+#         report = sv.analyze(data)
+        
+#         # HTML 파일로 보고서 저장
+#         report_html = report.show_html(filepath='report.html', open_browser=False)
+
+#         # 스트리밋에 보고서 표시
+#         with open('report.html', 'r') as f:
+#             html_string = f.read()
+        
+#         components.html(
+#             html_string,
+#             height=800,
+#             width=1200,
+#             scrolling=True 
+#         )
+
+
+# XAI 분류 실행
 if selected_xai == "XAI_분류":
     if st.button("XAI 분류 실행"):
-        st.components.v1.html(
-            """
-            <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
-            """,
-            height=600,
-        )
-        
+        # 임베디드 iframe
+        components.iframe("http://20.214.137.21:7777/", height=600)
 
-# Sweetviz 프로파일링
-elif selected_xai == "Sweetviz_Profiling":
+# Sweetviz 프로파일링 실행
+elif selected_xai == "Pandas_Profiling":
     if st.button("Sweetviz_Profiling 실행"):
-
         # Sweetviz 보고서 생성
         report = sv.analyze(data)
-        
         # HTML 파일로 보고서 저장
-        report_html = report.show_html(filepath='report.html', open_browser=False)
-
-        # 스트리밋에 보고서 표시
-        with open('report.html', 'r') as f:
-            html_string = f.read()
-        
-        components.html(
-            html_string,
-            height=800,
-            width=1200,
-            scrolling=True 
-        )
-
+        report.show_html(filepath='report.html', open_browser=False)
+        # 보고서 표시
+        HtmlFile = open('report.html', 'r', encoding='utf-8')
+        source_code = HtmlFile.read() 
+        components.html(source_code, height=800)
