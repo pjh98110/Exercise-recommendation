@@ -5,7 +5,7 @@ import numpy as np
 import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
-# import streamlit.components.v1 as components 
+import streamlit.components.v1 as components 
 # import sweetviz as sv
 
 
