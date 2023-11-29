@@ -104,9 +104,6 @@ st.session_state.selected_survey = selected_survey
 
 if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
 
-    # 문진 결과를 저장할 딕셔너리
-    st_results = {}
-
     # 사용자의 체력측정 입력값 수집
     questions = {
         "question1" : st.number_input("[측정항목1] 신장(cm)을 입력하세요.", placeholder="키 __cm", key="p1"),
@@ -230,8 +227,6 @@ if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
 
 if selected_survey == "바드 API를 활용한 맞춤형 운동 추천":
 
-    # 문진 결과를 저장할 딕셔너리
-    st_results = {}
 
     # 사용자의 체력측정 입력값 수집
     bard_input = {
