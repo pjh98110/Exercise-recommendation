@@ -40,7 +40,7 @@ st.markdown(f"""
 #     if st.button("XAI 분류 실행"):
 st.components.v1.html(
     """
-    <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
+    <iframe src="https://omnixai-24e10803fd23.herokuapp.com/" style="width:100%; height:600px;"></iframe>
     """,
     height=600,
 )
