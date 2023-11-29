@@ -39,7 +39,7 @@ selected_xai = st.selectbox(
 
 if selected_xai == "XAI_분류":
     if st.button("XAI 분류 실행"):
-        st.components.v1.html(
+        st.components.html(
             """
             <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
             """,
