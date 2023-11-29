@@ -46,7 +46,7 @@ if selected_xai == "XAI_분류":
         )
         
 
-Sweetviz 프로파일링
+# Sweetviz 프로파일링
 elif selected_xai == "Sweetviz_Profiling":
     if st.button("Sweetviz_Profiling 실행"):
 
