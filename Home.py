@@ -153,6 +153,9 @@ if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
 
     st.session_state.questions = questions
 
+    question41 = st.selectbox("[추천 시스템] 관심있는 신체 지수를 선택하세요.", ["신장", "체중", "체지방률", "허리둘레", "이완기최저혈압", "수축기최고혈압", "BMI", "허벅지_좌", "허벅지_우"] , key="b1")
+    question42 = st.selectbox("[추천 시스템] 운동을 통해 어떤 효과를 얻길 원하시나요?", ["플러스(+)", "마이너스(-)"] , key="b2")
+
 
     # 제출 버튼을 누를 경우
     if st.button("제출"):
@@ -163,11 +166,20 @@ if selected_survey == "추천시스템 기반 맞춤형 운동 추천":
         # 자신의 로컬 환경에서 실행해야 합니다.
 
         model_exercises = data['본운동'].sample(5).tolist()
-        volatility = round(random.uniform(-6, 6), 1)
+        # 변화율과 변화 기간을 랜덤으로 추출
+
+        # 플러스를 선택한 경우
+        if question42 == "플러스(+)":
+            volatility = round(random.uniform(0.1, 6), 1)
+
+        # 마이너스를 선택한 경우
+        elif question42 == "마이너스(-)":
+            volatility = round(random.uniform(-6, -0.1), 1)
+
         before_days = random.choice(range(10, 101, 10))
 
         st.markdown(f"당신의 성별은 {selected_gender}이며, 연령대는 {selected_age}입니다.")
-        st.markdown(f'변화율: {volatility}%, 변화 기간: {before_days}일')
+        st.markdown(f'{question41} 변화율: {volatility}%, 변화 기간: {before_days}일')
         st.markdown(f"분석한 결과 추천 운동은 {model_exercises}입니다.")
         st.markdown(f"추천 운동을 기반으로 원하는 정보를 선택하세요")
 
