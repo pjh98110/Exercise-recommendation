@@ -2,6 +2,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 import pandas as pd
 import numpy as np
+import random
 import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
