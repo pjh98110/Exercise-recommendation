@@ -65,5 +65,5 @@ if selected_xai == "XAI_분류":
 #             html_string,
 #             height=800,
 #             width=1200,
-            scrolling=True 
-        )
+#             scrolling=True 
+#         )
