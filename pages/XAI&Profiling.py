@@ -5,7 +5,7 @@ import numpy as np
 import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
-import streamlit.components.v1 as components 
+# import streamlit.components.v1 as components 
 import sweetviz as sv
 
 
@@ -52,7 +52,7 @@ if selected_xai == "XAI_분류":
         iframe_html = """
         <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
         """
-        components.html(iframe_html, height=600)
+        st.components.v1.html(iframe_html, height=600)
 
 
 # Sweetviz 프로파일링
@@ -69,7 +69,7 @@ elif selected_xai == "Sweetviz_Profiling":
         with open('report.html', 'r') as f:
             html_string = f.read()
         
-        components.html(
+        st.components.v1.html(
             html_string,
             height=800,
             width=1200,
