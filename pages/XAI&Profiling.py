@@ -48,9 +48,11 @@ selected_xai = st.selectbox(
 # XAI 분류 실행
 if selected_xai == "XAI_분류":
     if st.button("XAI 분류 실행"):
-        # iframe을 사용하여 외부 URL 로드
-        components.iframe("http://20.214.137.21:7777/", height=600)
-
+        # iframe 사용을 위한 HTML 코드
+        iframe_html = """
+        <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
+        """
+        components.html(iframe_html, height=600)
 
 
 # Sweetviz 프로파일링
