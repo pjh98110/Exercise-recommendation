@@ -6,7 +6,7 @@ import os
 import datetime as dt
 from streamlit_extras.switch_page_button import switch_page
 import streamlit.components.v1 as components 
-# import sweetviz as sv
+import sweetviz as sv
 
 
 if "page" not in st.session_state:
@@ -46,24 +46,24 @@ if selected_xai == "XAI_분류":
         )
         
 
-# Sweetviz 프로파일링
-# elif selected_xai == "Sweetviz_Profiling":
-#     if st.button("Sweetviz_Profiling 실행"):
+Sweetviz 프로파일링
+elif selected_xai == "Sweetviz_Profiling":
+    if st.button("Sweetviz_Profiling 실행"):
 
-#         # Sweetviz 보고서 생성
-#         report = sv.analyze(data)
+        # Sweetviz 보고서 생성
+        report = sv.analyze(data)
         
-#         # HTML 파일로 보고서 저장
-#         report_html = report.show_html(filepath='report.html', open_browser=False)
+        # HTML 파일로 보고서 저장
+        report_html = report.show_html(filepath='report.html', open_browser=False)
 
-#         # 스트리밋에 보고서 표시
-#         with open('report.html', 'r') as f:
-#             html_string = f.read()
+        # 스트리밋에 보고서 표시
+        with open('report.html', 'r') as f:
+            html_string = f.read()
         
-#         components.html(
-#             html_string,
-#             height=800,
-#             width=1200,
-#             scrolling=True 
-#         )
+        components.html(
+            html_string,
+            height=800,
+            width=1200,
+            scrolling=True 
+        )
 
