@@ -36,8 +36,8 @@ selected_xai = st.selectbox(
 
 
 
-if selected_xai == "XAI_분류":
-    if st.button("XAI 분류 실행"):
+# if selected_xai == "XAI_분류":
+#     if st.button("XAI 분류 실행"):
         # st.components.v1.html(
         #     """
         #     <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
@@ -45,12 +45,14 @@ if selected_xai == "XAI_분류":
         #     height=600,
         # )
         
-        components.html(
-            """
-            <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
-            """,
-            height=600,
-        )
+# XAI 분류 실행
+if selected_xai == "XAI_분류":
+    if st.button("XAI 분류 실행"):
+        # iframe 사용을 위한 HTML 코드
+        iframe_html = """
+        <iframe src="http://20.214.137.21:7777/" style="width:100%; height:600px;"></iframe>
+        """
+        components.html(iframe_html, height=600)
 
 
 
