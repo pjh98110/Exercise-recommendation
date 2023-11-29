@@ -47,7 +47,7 @@ selected_xai = st.selectbox(
         
 # XAI 분류 실행
 if selected_xai == "XAI_분류":
-    st.markdown(f"일부 브라우저에서 보안 정책상 화면이 안 보일 경우 {http://20.214.137.21:7777/}로 접속하시면 XAI 결과를 확인할 수 있습니다.")
+    st.markdown(f"일부 브라우저에서 보안 정책상 화면이 안 보일 경우 **http://20.214.137.21:7777/**로 접속하시면 XAI 결과를 확인할 수 있습니다.")
     if st.button("XAI 분류 실행"):
         # iframe 사용을 위한 HTML 코드
         iframe_html = """
