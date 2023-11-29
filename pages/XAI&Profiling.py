@@ -49,7 +49,7 @@ selected_xai = st.selectbox(
 if selected_xai == "XAI_분류":
     if st.button("XAI 분류 실행"):
         # iframe을 사용하여 외부 URL 로드
-        components.iframecomponents.iframe("http://20.214.137.21:7777/", height=600)
+        components.iframe("http://20.214.137.21:7777/", height=600)
 
 
 
